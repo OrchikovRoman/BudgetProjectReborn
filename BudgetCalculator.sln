@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DALBudgetCalculator", "DALB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetCalculator", "BudgetCalculator\BudgetCalculator.csproj", "{CBC94192-D1C2-492A-85E4-7CFF6D3626F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetCalculatorAPI", "BudgetCalculatorAPI\BudgetCalculatorAPI.csproj", "{7EB99AA3-8A28-4B0E-8710-644E7C1C7939}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{CBC94192-D1C2-492A-85E4-7CFF6D3626F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBC94192-D1C2-492A-85E4-7CFF6D3626F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBC94192-D1C2-492A-85E4-7CFF6D3626F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EB99AA3-8A28-4B0E-8710-644E7C1C7939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EB99AA3-8A28-4B0E-8710-644E7C1C7939}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EB99AA3-8A28-4B0E-8710-644E7C1C7939}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EB99AA3-8A28-4B0E-8710-644E7C1C7939}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

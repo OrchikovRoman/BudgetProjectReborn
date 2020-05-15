@@ -16,6 +16,6 @@ namespace BLBudgetCalculator.Models
         public int UserId { get; set; }
 
         public int CategoryId { get; set; }
-        public CategoryModel Category { get; set; }
+        public CategoryModel CategoryModel { get; set; }
     }
 }

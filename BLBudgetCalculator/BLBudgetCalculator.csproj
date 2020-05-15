@@ -38,6 +38,7 @@
       <HintPath>..\packages\LightInject.6.3.3\lib\net46\LightInject.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO" />
     <Reference Include="System.Linq.Expressions" />

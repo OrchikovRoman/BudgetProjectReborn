@@ -20,6 +20,6 @@ namespace BudgetCalculator.Models
         public int UserId { get; set; }
 
         public int CategoryId { get; set; }
-        public CategoryViewModel Category { get; set; }
+        public CategoryViewModel CategoryViewModel { get; set; }
     }
 }
