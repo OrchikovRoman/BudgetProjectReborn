@@ -1,0 +1,11 @@
+D:\BudgetCalculator\DALBudgetCalculator\bin\Debug\DALBudgetCalculator.dll.config
+D:\BudgetCalculator\DALBudgetCalculator\bin\Debug\DALBudgetCalculator.dll
+D:\BudgetCalculator\DALBudgetCalculator\bin\Debug\DALBudgetCalculator.pdb
+D:\BudgetCalculator\DALBudgetCalculator\bin\Debug\EntityFramework.dll
+D:\BudgetCalculator\DALBudgetCalculator\bin\Debug\EntityFramework.SqlServer.dll
+D:\BudgetCalculator\DALBudgetCalculator\bin\Debug\EntityFramework.xml
+D:\BudgetCalculator\DALBudgetCalculator\bin\Debug\EntityFramework.SqlServer.xml
+D:\BudgetCalculator\DALBudgetCalculator\obj\Debug\DALBudgetCalculator.csproj.CoreCompileInputs.cache
+D:\BudgetCalculator\DALBudgetCalculator\obj\Debug\DALBudgetCalculator.csproj.CopyComplete
+D:\BudgetCalculator\DALBudgetCalculator\obj\Debug\DALBudgetCalculator.dll
+D:\BudgetCalculator\DALBudgetCalculator\obj\Debug\DALBudgetCalculator.pdb
