@@ -9,3 +9,4 @@ D:\BudgetCalculator\DALBudgetCalculator\obj\Debug\DALBudgetCalculator.csproj.Cor
 D:\BudgetCalculator\DALBudgetCalculator\obj\Debug\DALBudgetCalculator.csproj.CopyComplete
 D:\BudgetCalculator\DALBudgetCalculator\obj\Debug\DALBudgetCalculator.dll
 D:\BudgetCalculator\DALBudgetCalculator\obj\Debug\DALBudgetCalculator.pdb
+D:\BudgetCalculator\DALBudgetCalculator\obj\Debug\DALBudgetCalculator.csprojAssemblyReference.cache
