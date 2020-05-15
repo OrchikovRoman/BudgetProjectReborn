@@ -260,10 +260,14 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Category\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Category\" />
+    <Folder Include="Content\Calculator\" />
+    <Folder Include="Content\Chart\" />
+    <Folder Include="Scripts\Calculator\" />
     <Folder Include="Views\Operation\" />
   </ItemGroup>
   <ItemGroup>
