@@ -9,3 +9,15 @@ D:\BudgetCalculator\DALBudgetCalculator\obj\Debug\DALBudgetCalculator.csproj.Cor
 D:\BudgetCalculator\DALBudgetCalculator\obj\Debug\DALBudgetCalculator.csproj.CopyComplete
 D:\BudgetCalculator\DALBudgetCalculator\obj\Debug\DALBudgetCalculator.dll
 D:\BudgetCalculator\DALBudgetCalculator\obj\Debug\DALBudgetCalculator.pdb
+D:\BudgetCalculator\DALBudgetCalculator\bin\Debug\Newtonsoft.Json.dll
+D:\BudgetCalculator\DALBudgetCalculator\bin\Debug\System.Net.Http.Formatting.dll
+D:\BudgetCalculator\DALBudgetCalculator\bin\Debug\System.Web.Cors.dll
+D:\BudgetCalculator\DALBudgetCalculator\bin\Debug\System.Web.Http.Cors.dll
+D:\BudgetCalculator\DALBudgetCalculator\bin\Debug\System.Web.Http.dll
+D:\BudgetCalculator\DALBudgetCalculator\bin\Debug\Newtonsoft.Json.xml
+D:\BudgetCalculator\DALBudgetCalculator\bin\Debug\System.Net.Http.Formatting.xml
+D:\BudgetCalculator\DALBudgetCalculator\bin\Debug\System.Web.Http.xml
+D:\BudgetCalculator\DALBudgetCalculator\bin\Debug\System.Web.Http.Cors.xml
+D:\BudgetCalculator\DALBudgetCalculator\bin\Debug\ru\System.Net.Http.Formatting.resources.dll
+D:\BudgetCalculator\DALBudgetCalculator\bin\Debug\ru\System.Web.Http.resources.dll
+D:\BudgetCalculator\DALBudgetCalculator\obj\Debug\DALBudgetCalculator.csprojAssemblyReference.cache

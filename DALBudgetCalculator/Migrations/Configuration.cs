@@ -36,7 +36,7 @@
                 context.Categories.Add(new Category { Id = 16, Name = "Зарплата", Image = "Зарплата" });
 
 
-                context.Operations.Add(new Operation { Id = 1, Amount = -50, Description = "Зубна паста", DateOperation = new DateTime(2020, 1, 11), CategoryId = 1, UserId = 1 });
+                context.Operations.Add(new Operation { Id = 1, Amount = -50, Description = "Зубная паста", DateOperation = new DateTime(2020, 1, 11), CategoryId = 1, UserId = 1 });
                 context.Operations.Add(new Operation { Id = 2, Amount = -3500, Description = "Продукты", DateOperation = new DateTime(2020, 1, 11), CategoryId = 2, UserId = 1 });
                 context.Operations.Add(new Operation { Id = 3, Amount = -4000, Description = "Аренда жилья", DateOperation = new DateTime(2020, 1, 11), CategoryId = 3, UserId = 1 });
                 context.Operations.Add(new Operation { Id = 4, Amount = -180, Description = "Анальгин", DateOperation = new DateTime(2020, 1, 11), CategoryId = 4, UserId = 1 });

@@ -143,3 +143,12 @@ D:\BudgetCalculator\BudgetCalculator\bin\ru\Microsoft.Owin.Security.MicrosoftAcc
 D:\BudgetCalculator\BudgetCalculator\obj\Debug\BudgetCalculator.csproj.CopyComplete
 D:\BudgetCalculator\BudgetCalculator\obj\Debug\BudgetCalculator.dll
 D:\BudgetCalculator\BudgetCalculator\obj\Debug\BudgetCalculator.pdb
+D:\BudgetCalculator\BudgetCalculator\bin\System.Net.Http.Formatting.dll
+D:\BudgetCalculator\BudgetCalculator\bin\System.Web.Cors.dll
+D:\BudgetCalculator\BudgetCalculator\bin\System.Web.Http.Cors.dll
+D:\BudgetCalculator\BudgetCalculator\bin\System.Web.Http.dll
+D:\BudgetCalculator\BudgetCalculator\bin\System.Net.Http.Formatting.xml
+D:\BudgetCalculator\BudgetCalculator\bin\System.Web.Http.xml
+D:\BudgetCalculator\BudgetCalculator\bin\System.Web.Http.Cors.xml
+D:\BudgetCalculator\BudgetCalculator\bin\ru\System.Net.Http.Formatting.resources.dll
+D:\BudgetCalculator\BudgetCalculator\bin\ru\System.Web.Http.resources.dll

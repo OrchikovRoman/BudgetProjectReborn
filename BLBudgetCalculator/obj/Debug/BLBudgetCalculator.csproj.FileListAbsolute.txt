@@ -18,3 +18,14 @@ D:\BudgetCalculator\BLBudgetCalculator\obj\Debug\BLBudgetCalculator.csproj.CoreC
 D:\BudgetCalculator\BLBudgetCalculator\obj\Debug\BLBudgetCalculator.csproj.CopyComplete
 D:\BudgetCalculator\BLBudgetCalculator\obj\Debug\BLBudgetCalculator.dll
 D:\BudgetCalculator\BLBudgetCalculator\obj\Debug\BLBudgetCalculator.pdb
+D:\BudgetCalculator\BLBudgetCalculator\bin\Debug\Newtonsoft.Json.dll
+D:\BudgetCalculator\BLBudgetCalculator\bin\Debug\System.Net.Http.Formatting.dll
+D:\BudgetCalculator\BLBudgetCalculator\bin\Debug\System.Web.Cors.dll
+D:\BudgetCalculator\BLBudgetCalculator\bin\Debug\System.Web.Http.Cors.dll
+D:\BudgetCalculator\BLBudgetCalculator\bin\Debug\System.Web.Http.dll
+D:\BudgetCalculator\BLBudgetCalculator\bin\Debug\Newtonsoft.Json.xml
+D:\BudgetCalculator\BLBudgetCalculator\bin\Debug\System.Net.Http.Formatting.xml
+D:\BudgetCalculator\BLBudgetCalculator\bin\Debug\System.Web.Http.xml
+D:\BudgetCalculator\BLBudgetCalculator\bin\Debug\System.Web.Http.Cors.xml
+D:\BudgetCalculator\BLBudgetCalculator\bin\Debug\ru\System.Net.Http.Formatting.resources.dll
+D:\BudgetCalculator\BLBudgetCalculator\bin\Debug\ru\System.Web.Http.resources.dll
