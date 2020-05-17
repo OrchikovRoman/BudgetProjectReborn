@@ -183,49 +183,35 @@ const deleteOperation = (event) => {
     }
 };
 
-const init = ()=> {
+const init = () => {
     historyList.textContent = '';
-    
+
     $.ajax({
         type: 'GET',
         url: 'http://local.budgetcalculatorapi/api/Operation',
         success: (operation) => {
-            dbOperationChart=operation;
+            dbOperationChart = operation;
+            dbOperation = operation;
+
+            dbOperation.forEach(renderOperation);
+            updateBalance();
+
             $.ajax({
                 type: 'GET',
                 url: 'http://local.budgetcalculatorapi/api/Category',
                 success: (category) => {
-                    dbCategoriesChart=category;
-                    calculationOfDataChart();                                       
+                    $.each(category, (i, item) => {
+                        $categories.append(`<option value="${item.Id}">${item.Name}</option>`)
+                    });
+
+                    dbCategoriesChart = category;
+                    calculationOfDataChart();
                 },
                 error: () => { alert('error loading categories for chart'); }
             })
         },
         error: () => { alert('error loading operations for chart'); }
     })
-
-    $.ajax({
-        type: 'GET',
-        url: 'http://local.budgetcalculatorapi/api/Operation',
-        success: function(operations) {
-            dbOperation = operations;
-            dbOperation.forEach(renderOperation);
-            updateBalance();
-        },
-        error: () => { alert('error loading operations'); }
-    })
-
-    $.ajax({
-        type: 'GET',
-        url: 'http://local.budgetcalculatorapi/api/Category',
-        success: (categories) => {
-            $.each(categories, (i, item)=>{
-                $categories.append(`<option value="${item.Id}">${item.Name}</option>`)
-            });
-        },
-        error: () => { alert('error loading categories list'); }
-    })
-    
 };
 
 form.addEventListener('submit', addOperation);
