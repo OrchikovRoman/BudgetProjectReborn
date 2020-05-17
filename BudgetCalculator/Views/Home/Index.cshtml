@@ -2,30 +2,99 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кошелек JS</title>
+    <link rel="stylesheet" href="~/Content/Calculator/styleChart.css">
+    <link rel="stylesheet" href="~/Content/Calculator/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <section class="total">
+            <figure class="highcharts-figure">
+                <div id="container"></div>
+                <p class="highcharts-description total">
+                    This donut chart shows your expenses by category.
+                    In order to look in more detail,
+                    go to the chart settings
+                    and select the item - <strong>View data table</strong>.
+                </p>
+            </figure>
+        </section>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+
+    <br />
+    <h2>Budget Calculator</h2>
+
+    <main>
+        <div class="container">
+            <section class="total">
+                <header class="total__header">
+                    <h3>Balance</h3>
+                    <p class="total__balance">0 ₴</p>
+                </header>
+                <div class="total__main">
+                    <div class="total__main-item total__income">
+                        <h4>Income</h4>
+                        <p class="total__money total__money-income">
+                            +0 ₴
+                        </p>
+                    </div>
+                    <div class="total__main-item total__expenses">
+                        <h4>Expenses</h4>
+                        <p class="total__money total__money-expenses">
+                            -0 ₴
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="operation">
+                <h3>Create operation</h3>
+                <form id="form">
+                    <label>
+                        <input type="text" class="operation__fields operation__description" placeholder="Description operation">
+                    </label>
+                    <label>
+                        <input type="number" class="operation__fields operation__amount" placeholder="Enter amount">
+                    </label>
+                    <label>
+                        <input type="date" class="operation__fields operation__dateOperation">
+                    </label>
+                    <label>
+                        <select class="operation__fields operation__categoryId" id="categories"></select>
+                    </label>
+                    <label>
+                        <input type="number" class="operation__fields operation__userId" placeholder="User Id">
+                    </label>
+                    <button type="submit" class="operation__add">Add operation</button>
+
+                </form>
+            </section>
+
+            <section class="history">
+                <h3>History Expenses</h3>
+                <ul class="history__list">
+                </ul>
+            </section>
+
+
+        </div>
+    </main>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <script src="~/Scripts/Calculator/jquery-3.5.1.js"></script>
+    <script src="~/Scripts/Calculator/script.js"></script>
+</body>
+
+</html>
