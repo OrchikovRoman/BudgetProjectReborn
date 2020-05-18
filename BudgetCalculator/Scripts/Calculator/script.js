@@ -195,23 +195,22 @@ const init = () => {
 
             dbOperation.forEach(renderOperation);
             updateBalance();
-
-            $.ajax({
-                type: 'GET',
-                url: 'http://local.budgetcalculatorapi/api/Category',
-                success: (category) => {
-                    $.each(category, (i, item) => {
-                        $categories.append(`<option value="${item.Id}">${item.Name}</option>`)
-                    });
-
-                    dbCategoriesChart = category;
-                    calculationOfDataChart();
-                },
-                error: () => { alert('error loading categories for chart'); }
-            })
         },
         error: () => { alert('error loading operations for chart'); }
-    })
+    });
+    $.ajax({
+        type: 'GET',
+        url: 'http://local.budgetcalculatorapi/api/Category',
+        success: (category) => {
+            $.each(category, (i, item) => {
+                $categories.append(`<option value="${item.Id}">${item.Name}</option>`)
+            });
+
+            dbCategoriesChart = category;
+            calculationOfDataChart();
+        },
+        error: () => { alert('error loading categories for chart'); }
+    });
 };
 
 form.addEventListener('submit', addOperation);
