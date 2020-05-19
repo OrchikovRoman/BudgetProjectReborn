@@ -41,6 +41,7 @@ namespace BudgetCalculatorAPI.Controllers
         }
 
         // POST: api/Operation
+        [HttpPost]
         public void Post([FromBody]OperationData model)
         {
             var operationPL = _mapper.Map<OperationModel>(model);
@@ -49,7 +50,7 @@ namespace BudgetCalculatorAPI.Controllers
 
         // PUT: api/Operation/5
         [HttpPut]
-        public void Put(int id, [FromBody]OperationData model)
+        public void Put([FromBody]OperationData model)
         {
             var operationPL = _mapper.Map<OperationModel>(model);
             _service.Update(operationPL);
