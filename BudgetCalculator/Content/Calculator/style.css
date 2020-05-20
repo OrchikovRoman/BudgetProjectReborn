@@ -44,6 +44,18 @@ ul {
     padding: 0;
     margin: 0;
 }
+ 
+ ul li .edit {
+    display: none;
+}
+
+ul li.edit .edit {
+    display: initial;
+} 
+
+ul li.edit .noedit {
+    display: none;
+} 
 
 h1,
 h2,
@@ -55,9 +67,9 @@ p {
     text-align: center;
 }
 
-.containerCustom {
+.container {
     margin: 0 auto;
-    width: 400px;
+    width: 400 auto;
 }
 
 
@@ -170,6 +182,51 @@ main {
 }
 
 .history__item:hover .history_delete{
+    opacity: 1;
+}
+
+.history_edit{
+    background-color: transparent;
+    color: black;
+    padding: 0 10;
+    border-width: 0;
+    font-size: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.history__item:hover .history_edit{
+    opacity: 1;
+}
+
+.history_save{
+    background-color: transparent;
+    color: rgb(2, 187, 2);
+    padding: 0 10;
+    border-width: 0;
+    font-size: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.history__item:hover .history_save{
+    opacity: 1;
+}
+
+.history_cancel{
+    background-color: transparent;
+    color: rgb(255, 0, 0);
+    padding: 0 10;
+    border-width: 0;
+    font-size: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.history__item:hover .history_cancel{
     opacity: 1;
 }
 

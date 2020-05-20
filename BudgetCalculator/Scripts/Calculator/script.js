@@ -1,4 +1,8 @@
 var $categories = $('#categories');
+var $categoriesEdit = $('#categoriesEdit');  
+var $historyExpenses = $('#orders');
+var stringCategories;
+
 
 const totalBalance = document.querySelector('.total__balance'),
     totalMoneyIncome = document.querySelector('.total__money-income'),
@@ -11,6 +15,7 @@ const totalBalance = document.querySelector('.total__balance'),
     operationCategoryId = document.querySelector('.operation__categoryId'),
     operationUserId = document.querySelector('.operation__userId');
 
+var listCategories = [];
 let dbOperationChart;
 let dbCategoriesChart;
 let dbOperation;
@@ -86,14 +91,28 @@ const renderOperation = (operation)=>{
     'history__item-plus';
 
     const listItem = document.createElement('li');
+    listItem.classList.add('noedit');                                     
     listItem.classList.add('history__item');
+    listItem.setAttribute('data-id', `${operation.Id}`)
     listItem.classList.add(className);
 
-    listItem.innerHTML = `${operation.Description}
-        <span class="history__money">${operation.Amount} ₴</span>
-        <button class="history_delete" data-id="${operation.Id}">x</button>
-    `;
+    
+    listItem.innerHTML = `<span class="noedit description">${operation.Description}</span>
+    <input type="text" class="edit operation__fields description" placeholder="Description operation"/>
+    
+    <input type="date" class="edit operation__fields dateOperation">
 
+    <select class="edit operation__fields categoryId" id="categoriesEdit">${stringCategories}</select>
+    
+    <span class="history__money noedit amount">${operation.Amount} ₴</span>
+    <input type="number" class="edit operation__fields amount" placeholder="Enter amount"/>
+    
+    <button class="editOperation noedit history_edit">Edit</button>
+    <button class="saveEdit edit history_save">Save</button>
+    <button class="cancelEdit edit history_cancel">Cancel</button>
+    <button class="history_delete" data-id="${operation.Id}">X</button>
+    `;
+    
     historyList.append(listItem);
 };
 
@@ -124,6 +143,9 @@ const addOperation = (event) => {
 
         operationDescription.style.borderColor = '';
         operationAmount.style.borderColor = '';
+        operationDateOperation.style.borderColor = '';
+        operationCategoryId.style.borderColor = '';
+        operationUserId.style.borderColor = '';
 
     if(operationDescriptionValue && operationAmountValue &&
         operationDateOperationValue && operationCategoryIdValue && operationUserIdValue) {
@@ -140,7 +162,7 @@ const addOperation = (event) => {
         CategoryId: operationCategoryId.value,
         UserId: operationUserId.value,
        }
-
+       console.log(model);
        $.ajax( {
             type: 'POST',
             url: 'http://local.budgetcalculatorapi/api/Operation',
@@ -183,38 +205,79 @@ const deleteOperation = (event) => {
     }
 };
 
-const init = () => {
+const init = ()=> {
     historyList.textContent = '';
-
+    
     $.ajax({
         type: 'GET',
         url: 'http://local.budgetcalculatorapi/api/Operation',
         success: (operation) => {
-            dbOperationChart = operation;
+            dbOperationChart=operation;
             dbOperation = operation;
-
-            dbOperation.forEach(renderOperation);
-            updateBalance();
+            $.ajax({
+                type: 'GET',
+                url: 'http://local.budgetcalculatorapi/api/Category',
+                success: (category) => {
+                    $.each(category, (i, item)=>{
+                        $categories.append(`<option value="${item.Id}">${item.Name}</option>`)
+                        listCategories.push(`<option value="${item.Id}">${item.Name}</option>`);
+                    });
+                    stringCategories = listCategories.join("");
+                    dbOperation.forEach(renderOperation, stringCategories);
+                    updateBalance();
+                    dbCategoriesChart=category;
+                    calculationOfDataChart();                                       
+                },
+                error: () => { alert('error loading categories for chart'); }
+            });
+            
+            
         },
         error: () => { alert('error loading operations for chart'); }
-    });
-    $.ajax({
-        type: 'GET',
-        url: 'http://local.budgetcalculatorapi/api/Category',
-        success: (category) => {
-            $.each(category, (i, item) => {
-                $categories.append(`<option value="${item.Id}">${item.Name}</option>`)
-            });
-
-            dbCategoriesChart = category;
-            calculationOfDataChart();
-        },
-        error: () => { alert('error loading categories for chart'); }
     });
 };
 
 form.addEventListener('submit', addOperation);
 historyList.addEventListener('click', deleteOperation);
+
+$historyExpenses.delegate('.editOperation', 'click', function() {
+    var $li = $(this).closest('li');
+    $li.find('input.description').val($li.find('span.description').html());
+    $li.find('input.amount').val($li.find('span.amount').html());
+    $li.addClass('edit');
+
+});
+
+$historyExpenses.delegate('.cancelEdit', 'click', function() {
+    $(this).closest('li').removeClass('edit');
+});
+
+$historyExpenses.delegate('.saveEdit', 'click', function(){
+    
+    var $li = $(this).closest('li');
+    var model = {
+        Id: $li.attr('data-id'),
+        Amount: $li.find('input.amount').val(),
+        Description: $li.find('input.description').val(),   
+        DateOperation: ($li.find('input.dateOperation').val()),
+        CategoryId: $li.find('select.categoryId').val(),
+        UserId: "1",
+    };
+    $.ajax( {
+        type: 'PUT',
+        url: 'http://local.budgetcalculatorapi/api/Operation/',
+        data: model,
+        success: function(item) {
+            $li.find('span.description').html(model.description); 
+            $li.find('span.amount').html(model.amount);
+            $li.find('span.dateOperation').html(model.dateOperation);
+            $li.find('span.operation__categoryId').html(model.categoryId);
+            $li.removeClass('edit');
+            init();
+        },
+        error: () => { alert('error updating operation'); }
+   })
+});
 
 init();
 
