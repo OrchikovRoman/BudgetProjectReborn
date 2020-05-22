@@ -145,10 +145,9 @@ const addOperation = (event) => {
         operationAmount.style.borderColor = '';
         operationDateOperation.style.borderColor = '';
         operationCategoryId.style.borderColor = '';
-        operationUserId.style.borderColor = '';
 
     if(operationDescriptionValue && operationAmountValue &&
-        operationDateOperationValue && operationCategoryIdValue && operationUserIdValue) {
+        operationDateOperationValue && operationCategoryIdValue) {
         
        const operation = {
            description: operationDescriptionValue,
@@ -161,7 +160,7 @@ const addOperation = (event) => {
         DateOperation: operationDateOperation.value,
         CategoryId: operationCategoryId.value,
         UserId: operationUserId.value,
-       }
+        }
        console.log(model);
        $.ajax( {
             type: 'POST',
@@ -179,7 +178,6 @@ const addOperation = (event) => {
         if(!operationAmountValue) operationAmount.style.borderColor = 'red';
         if(!operationDateOperationValue) operationDateOperation.style.borderColor = 'red';
         if(!operationCategoryIdValue) operationCategoryId.style.borderColor = 'red';
-        if(!operationUserIdValue) operationUserId.style.borderColor = 'red';
     }
     
     operationDescription.value = '';
@@ -261,8 +259,9 @@ $historyExpenses.delegate('.saveEdit', 'click', function(){
         Description: $li.find('input.description').val(),   
         DateOperation: ($li.find('input.dateOperation').val()),
         CategoryId: $li.find('select.categoryId').val(),
-        UserId: "1",
+        UserId: operationUserId.value,
     };
+    console.log(model);
     $.ajax( {
         type: 'PUT',
         url: 'http://local.budgetcalculatorapi/api/Operation/',

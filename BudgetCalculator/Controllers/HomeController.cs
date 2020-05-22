@@ -14,7 +14,7 @@ namespace BudgetCalculator.Controllers
         public ActionResult Index()
         {
             var indexModel = new IndexModel { UserId = User.Identity.GetUserId() };
-            return View();
+            return View(indexModel);
         }
 
         public ActionResult About()

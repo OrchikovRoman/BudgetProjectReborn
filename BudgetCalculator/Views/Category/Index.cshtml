@@ -3,54 +3,43 @@
     ViewBag.Title = "Categories";
 }
 
-@*<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="~/Content/Calculator/style.css">
-</head>
-<body>*@
-    <section class="total" style="background-color: #A9E2F3">
-        <h3>Categories</h3>
-    </section>
-    <section class="total" style="background-color: #E0ECF8">
-        <p>
-            <strong>
-                @Html.ActionLink("Create New", "Create")
-            </strong>
-        </p>
-        <p>
-            <table class="table">
+<section class="total" style="background-color: #A9E2F3">
+    <h3>Categories</h3>
+</section>
+<section class="total" style="background-color: #E0ECF8">
+    <p>
+        <strong>
+            @Html.ActionLink("Create New", "Create")
+        </strong>
+    </p>
+    <p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var category in Model)
+            {
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Image)
-                    </th>
-                    <th></th>
+                    <td>
+                        @Html.DisplayFor(modelItem => category.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => category.Image)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = category.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = category.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = category.Id })
+                    </td>
                 </tr>
-                @foreach (var category in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => category.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => category.Image)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = category.Id }) |
-                            @Html.ActionLink("Details", "Details", new { id = category.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = category.Id })
-                        </td>
-                    </tr>
-                }
-            </table>
+            }
+        </table>
 
-        </p>
-    </section>
-@*</body>
-</html>*@
+    </p>
+</section>

@@ -1,105 +1,91 @@
 ﻿@model BudgetCalculator.Models.IndexModel
 @{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@*<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="~/Content/Calculator/styleChart.css">
-    <link rel="stylesheet" href="~/Content/Calculator/style.css">
-</head>
+<div class="container">
+    <section class="total">
+        <figure class="highcharts-figure">
+            <div id="container"></div>
+            <p class="highcharts-description total">
+                This donut chart <svg class="bi bi-pie-chart" width="1em" height="1em" viewBox="0 0 16 16" fill="Black" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8 15A7 7 0 108 1a7 7 0 000 14zm0 1A8 8 0 108 0a8 8 0 000 16z" clip-rule="evenodd" />
+                    <path fill-rule="evenodd" d="M7.5 7.793V1h1v6.5H15v1H8.207l-4.853 4.854-.708-.708L7.5 7.793z" clip-rule="evenodd" />
+                </svg> shows your expenses by category.
+                In order to look in more detail,
+                go to the chart <svg class="bi bi-justify" width="1em" height="1em" viewBox="0 0 16 16" fill="Black" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M2 12.5a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd" />
+                </svg> settings
+                and select the item - <strong>View data table</strong>.
+            </p>
+        </figure>
+    </section>
+</div>
 
-<body>*@
 
-    @*<input type="hidden" id="UserId" value="@Model.UserId" />*@
+<br />
+<h2>Budget Calculator</h2>
+
+<main>
     <div class="container">
         <section class="total">
-            <figure class="highcharts-figure">
-                <div id="container"></div>
-                <p class="highcharts-description total">
-                    This donut chart <svg class="bi bi-pie-chart" width="1em" height="1em" viewBox="0 0 16 16" fill="Black" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M8 15A7 7 0 108 1a7 7 0 000 14zm0 1A8 8 0 108 0a8 8 0 000 16z" clip-rule="evenodd" />
-                        <path fill-rule="evenodd" d="M7.5 7.793V1h1v6.5H15v1H8.207l-4.853 4.854-.708-.708L7.5 7.793z" clip-rule="evenodd" />
-                    </svg> shows your expenses by category.
-                    In order to look in more detail,
-                    go to the chart <svg class="bi bi-justify" width="1em" height="1em" viewBox="0 0 16 16" fill="Black" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M2 12.5a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd" />
-                    </svg> settings
-                    and select the item - <strong>View data table</strong>.
-                </p>
-            </figure>
+            <header class="total__header">
+                <h3>Balance</h3>
+                <p class="total__balance">0 ₴</p>
+            </header>
+            <div class="total__main">
+                <div class="total__main-item total__income">
+                    <h4>Income</h4>
+                    <p class="total__money total__money-income">
+                        +0 ₴
+                    </p>
+                </div>
+                <div class="total__main-item total__expenses">
+                    <h4>Expenses</h4>
+                    <p class="total__money total__money-expenses">
+                        -0 ₴
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="operation">
+            <h3>Create operation</h3>
+            <form id="form">
+                <label>
+                    <input type="text" class="operation__fields operation__description" placeholder="Description operation">
+                </label>
+                <label>
+                    <input type="number" class="operation__fields operation__amount" placeholder="Enter amount">
+                </label>
+                <label>
+                    <input type="date" class="operation__fields operation__dateOperation">
+                </label>
+                <label>
+                    <select class="operation__fields operation__categoryId" id="categories"></select>
+                </label>
+                <label>
+                    <input type="hidden" class="operation__fields operation__userId" value="@Model.UserId">
+                </label>
+                <button type="submit" class="operation__add">Add operation</button>
+
+            </form>
+        </section>
+
+        <section class="history">
+            <h3>History Expenses</h3>
+            <ul class="history__list" id="orders">
+            </ul>
         </section>
     </div>
+</main>
 
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-    <br />
-    <h2>Budget Calculator</h2>
-
-    <main>
-        <div class="container">
-            <section class="total">
-                <header class="total__header">
-                    <h3>Balance</h3>
-                    <p class="total__balance">0 ₴</p>
-                </header>
-                <div class="total__main">
-                    <div class="total__main-item total__income">
-                        <h4>Income</h4>
-                        <p class="total__money total__money-income">
-                            +0 ₴
-                        </p>
-                    </div>
-                    <div class="total__main-item total__expenses">
-                        <h4>Expenses</h4>
-                        <p class="total__money total__money-expenses">
-                            -0 ₴
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="operation">
-                <h3>Create operation</h3>
-                <form id="form">
-                    <label>
-                        <input type="text" class="operation__fields operation__description" placeholder="Description operation">
-                    </label>
-                    <label>
-                        <input type="number" class="operation__fields operation__amount" placeholder="Enter amount">
-                    </label>
-                    <label>
-                        <input type="date" class="operation__fields operation__dateOperation">
-                    </label>
-                    <label>
-                        <select class="operation__fields operation__categoryId" id="categories"></select>
-                    </label>
-                    <label>
-                        <input type="number" class="operation__fields operation__userId" @*value="@Model.UserId"*@ placeholder="User Id">
-                    </label>
-                    <button type="submit" class="operation__add">Add operation</button>
-
-                </form>
-            </section>
-
-            <section class="history">
-                <h3>History Expenses</h3>
-                <ul class="history__list" id="orders">
-                </ul>
-            </section>
-        </div>
-    </main>
-
-    @*<script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
-    <script src="~/Scripts/Calculator/jquery-3.5.1.js"></script>
-    <script src="~/Scripts/Calculator/script.js"></script>
-</body>
-
-</html>*@
+<script src="~/Scripts/Calculator/jquery-3.5.1.js"></script>
+<script src="~/Scripts/Calculator/script.js"></script>

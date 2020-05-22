@@ -4,54 +4,43 @@
     ViewBag.Title = "Index";
 }
 
-@*<!DOCTYPE html>
-<html lang="en">
+<section class="total" style="background-color: #F4FA58">
+    <h3>Operations</h3>
+</section>
+<section class="total" style="background-color: #E1F5A9">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOperation)
+            </th>
+            <th></th>
+        </tr>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="~/Content/Calculator/style.css">
-</head>
-<body>*@
-    <section class="total" style="background-color: #F4FA58">
-        <h3>Operations</h3>
-    </section>
-    <section class="total" style="background-color: #E1F5A9">
-        <table class="table">
+        @foreach (var item in Model)
+        {
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Amount)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DateOperation)
-                </th>
-                <th></th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOperation)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                </td>
             </tr>
+        }
 
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Amount)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateOperation)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id })
-                    </td>
-                </tr>
-            }
+    </table>
+</section>
 
-        </table>
-    </section>
 
-@*</body>
-</html>*@
