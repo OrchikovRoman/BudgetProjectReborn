@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace BudgetCalculator.Controllers
 {
+    [Authorize]
     public class OperationController : Controller
     {
         private readonly IOperationService _service;

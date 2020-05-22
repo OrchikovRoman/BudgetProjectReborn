@@ -13,7 +13,7 @@ namespace DALBudgetCalculator.Entities
         public int Amount { get; set; }
         public DateTime DateOperation { get; set; }
         
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         
         public int CategoryId { get; set; }
         public Category Category { get; set; }

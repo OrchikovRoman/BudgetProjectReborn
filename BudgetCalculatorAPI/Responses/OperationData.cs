@@ -17,7 +17,7 @@ namespace BudgetCalculatorAPI.Responses
         [DataType(DataType.Date)]
         public DateTime DateOperation { get; set; }
 
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         public int CategoryId { get; set; }
         public CategoryData CategoryData { get; set; }

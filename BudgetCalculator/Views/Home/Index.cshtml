@@ -1,8 +1,9 @@
-﻿@{
+﻿@model BudgetCalculator.Models.IndexModel
+@{
     ViewBag.Title = "Home Page";
 }
 
-<!DOCTYPE html>
+@*<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,7 +13,9 @@
     <link rel="stylesheet" href="~/Content/Calculator/style.css">
 </head>
 
-<body>
+<body>*@
+
+    @*<input type="hidden" id="UserId" value="@Model.UserId" />*@
     <div class="container">
         <section class="total">
             <figure class="highcharts-figure">
@@ -75,7 +78,7 @@
                         <select class="operation__fields operation__categoryId" id="categories"></select>
                     </label>
                     <label>
-                        <input type="number" class="operation__fields operation__userId" placeholder="User Id">
+                        <input type="number" class="operation__fields operation__userId" @*value="@Model.UserId"*@ placeholder="User Id">
                     </label>
                     <button type="submit" class="operation__add">Add operation</button>
 
@@ -90,7 +93,7 @@
         </div>
     </main>
 
-    <script src="https://code.highcharts.com/highcharts.js"></script>
+    @*<script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
@@ -99,4 +102,4 @@
     <script src="~/Scripts/Calculator/script.js"></script>
 </body>
 
-</html>
+</html>*@

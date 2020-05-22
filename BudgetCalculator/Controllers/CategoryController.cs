@@ -2,6 +2,7 @@
 using BLBudgetCalculator.Interfaces;
 using BLBudgetCalculator.Models;
 using BudgetCalculator.Models;
+using Microsoft.AspNet.Identity; //ДЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩ
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ using System.Web.Mvc;
 
 namespace BudgetCalculator.Controllers
 {
+    [Authorize]
     public class CategoryController : Controller
     {
         private readonly ICategoryService _service;
@@ -48,6 +50,9 @@ namespace BudgetCalculator.Controllers
         [HttpPost]
         public ActionResult Create(CategoryViewModel model)
         {
+            var userId = User.Identity.GetUserId();
+            model.Image = userId;
+            
             if (!ModelState.IsValid)
             {
                 return View(model);

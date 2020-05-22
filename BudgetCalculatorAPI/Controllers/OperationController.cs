@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Microsoft.AspNet.Identity;
 
 namespace BudgetCalculatorAPI.Controllers
 {
@@ -44,6 +45,9 @@ namespace BudgetCalculatorAPI.Controllers
         [HttpPost]
         public void Post([FromBody]OperationData model)
         {
+            var userId = User.Identity.GetUserId();
+            model.UserId = userId;
+
             var operationPL = _mapper.Map<OperationModel>(model);
             _service.Create(operationPL);
         }

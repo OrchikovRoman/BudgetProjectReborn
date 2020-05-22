@@ -1,13 +1,15 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Budget Calculator</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="~/Content/Icons/styleIcon.css">
+    <link rel="stylesheet" href="~/Content/Calculator/styleChart.css">
+    <link rel="stylesheet" href="~/Content/Calculator/style.css">
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -71,5 +73,12 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <script src="~/Scripts/Calculator/jquery-3.5.1.js"></script>
+    <script src="~/Scripts/Calculator/script.js"></script>
 </body>
 </html>
