@@ -14,6 +14,7 @@ const totalBalance = document.querySelector('.total__balance'),
     operationDateOperation = document.querySelector('.operation__dateOperation'),
     operationCategoryId = document.querySelector('.operation__categoryId'),
     operationUserId = document.querySelector('.operation__userId');
+var userId = operationUserId.value;
 
 var listCategories = [];
 let dbOperationChart;
@@ -26,7 +27,7 @@ const calculationOfDataChart = () => {
     var partSummArr = [];
     var partNameArr = [];
 
-    for( let i=1; i < dbOperationChart.length; i++) {
+    for( let i=1; i < dbCategoriesChart.length; i++) {
         const summ = dbOperationChart.filter((item) => item.CategoryId == i)
         .reduce((result, item) => result + item.Amount, 0);
         if(summ<0) {
@@ -36,17 +37,22 @@ const calculationOfDataChart = () => {
         }
     }
 
+    console.log(expensesArr);
+    
+
     const sumAllExpenses = expensesArr.reduce((result, item) => result + item, 0);
     for( let i=0; i < expensesArr.length; i++) {
         const partSumm = Math.round(((expensesArr[i]*100)/sumAllExpenses)*100)/100;
         partSummArr.push(partSumm);
     }
+    console.log(partSummArr);
 
     let dataChart = [];
     for(var i = 0; i< partNameArr.length; i++){
     var resultvar = { y : partSummArr[i], name: partNameArr[i] }
-    dataChart.push(resultvar)
+        dataChart.push(resultvar)
     }
+    console.log(dataChart);
 
     Highcharts.chart('container', {
         chart: {
@@ -138,8 +144,7 @@ const addOperation = (event) => {
     const operationDescriptionValue = operationDescription.value,
         operationAmountValue = operationAmount.value,
         operationDateOperationValue = operationDateOperation.value,
-        operationCategoryIdValue = operationCategoryId.value,
-        operationUserIdValue = operationUserId.value;
+        operationCategoryIdValue = operationCategoryId.value;
 
         operationDescription.style.borderColor = '';
         operationAmount.style.borderColor = '';
@@ -161,12 +166,13 @@ const addOperation = (event) => {
         CategoryId: operationCategoryId.value,
         UserId: operationUserId.value,
         }
-       console.log(model);
+       
        $.ajax( {
             type: 'POST',
             url: 'http://local.budgetcalculatorapi/api/Operation',
             data: model,
-            success: function(data) {
+           success: function (data) {
+               console.log(model);
                 dbOperation.push(operation);
                 init();
             },
@@ -209,6 +215,7 @@ const init = ()=> {
     $.ajax({
         type: 'GET',
         url: 'http://local.budgetcalculatorapi/api/Operation',
+        data: { UserId: userId },
         success: (operation) => {
             dbOperationChart=operation;
             dbOperation = operation;
@@ -216,6 +223,8 @@ const init = ()=> {
                 type: 'GET',
                 url: 'http://local.budgetcalculatorapi/api/Category',
                 success: (category) => {
+                    dbCategoriesChart = category;
+                    calculationOfDataChart();   
                     $.each(category, (i, item)=>{
                         $categories.append(`<option value="${item.Id}">${item.Name}</option>`)
                         listCategories.push(`<option value="${item.Id}">${item.Name}</option>`);
@@ -223,8 +232,7 @@ const init = ()=> {
                     stringCategories = listCategories.join("");
                     dbOperation.forEach(renderOperation, stringCategories);
                     updateBalance();
-                    dbCategoriesChart=category;
-                    calculationOfDataChart();                                       
+                                                        
                 },
                 error: () => { alert('error loading categories for chart'); }
             });

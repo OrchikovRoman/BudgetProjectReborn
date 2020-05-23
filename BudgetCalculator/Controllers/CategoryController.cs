@@ -50,9 +50,6 @@ namespace BudgetCalculator.Controllers
         [HttpPost]
         public ActionResult Create(CategoryViewModel model)
         {
-            var userId = User.Identity.GetUserId();
-            model.Image = userId;
-            
             if (!ModelState.IsValid)
             {
                 return View(model);

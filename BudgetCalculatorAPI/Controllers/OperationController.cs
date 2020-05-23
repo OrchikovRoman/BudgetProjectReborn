@@ -9,6 +9,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
+using System.Web;
 
 namespace BudgetCalculatorAPI.Controllers
 {
@@ -33,6 +34,17 @@ namespace BudgetCalculatorAPI.Controllers
             return operationPL;
         }
 
+        //GET: api/Operation/"5"
+        public IEnumerable<OperationData> Get(string userId)
+        {
+            var value = HttpContext.Current.Request.QueryString["UserId"];
+
+            var operationBL = _service.GetAll();
+            var operationsFilter = operationBL.Where(x => x.UserId == value);
+            var operationPL = _mapper.Map<IEnumerable<OperationData>>(operationsFilter);
+            return operationPL;
+        }
+
         // GET: api/Operation/5
         public OperationData Get(int id)
         {
@@ -45,9 +57,6 @@ namespace BudgetCalculatorAPI.Controllers
         [HttpPost]
         public void Post([FromBody]OperationData model)
         {
-            var userId = User.Identity.GetUserId();
-            model.UserId = userId;
-
             var operationPL = _mapper.Map<OperationModel>(model);
             _service.Create(operationPL);
         }
