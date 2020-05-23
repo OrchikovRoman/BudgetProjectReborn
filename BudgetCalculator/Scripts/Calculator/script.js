@@ -27,7 +27,7 @@ const calculationOfDataChart = () => {
     var partSummArr = [];
     var partNameArr = [];
 
-    for( let i=1; i < dbCategoriesChart.length; i++) {
+    for( let i=1; i < dbCategoriesChart.length*10; i++) {
         const summ = dbOperationChart.filter((item) => item.CategoryId == i)
         .reduce((result, item) => result + item.Amount, 0);
         if(summ<0) {
@@ -37,22 +37,17 @@ const calculationOfDataChart = () => {
         }
     }
 
-    console.log(expensesArr);
-    
-
     const sumAllExpenses = expensesArr.reduce((result, item) => result + item, 0);
     for( let i=0; i < expensesArr.length; i++) {
         const partSumm = Math.round(((expensesArr[i]*100)/sumAllExpenses)*100)/100;
         partSummArr.push(partSumm);
     }
-    console.log(partSummArr);
 
     let dataChart = [];
     for(var i = 0; i< partNameArr.length; i++){
     var resultvar = { y : partSummArr[i], name: partNameArr[i] }
         dataChart.push(resultvar)
     }
-    console.log(dataChart);
 
     Highcharts.chart('container', {
         chart: {

@@ -38,9 +38,8 @@ namespace BudgetCalculatorAPI.Controllers
         public IEnumerable<OperationData> Get(string userId)
         {
             var value = HttpContext.Current.Request.QueryString["UserId"];
-
             var operationBL = _service.GetAll();
-            var operationsFilter = operationBL.Where(x => x.UserId == value);
+            var operationsFilter = operationBL.Where(x => x.UserId == value || x.UserId==null);
             var operationPL = _mapper.Map<IEnumerable<OperationData>>(operationsFilter);
             return operationPL;
         }
