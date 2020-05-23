@@ -27,12 +27,12 @@ const calculationOfDataChart = () => {
     var partSummArr = [];
     var partNameArr = [];
 
-    for( let i=1; i < dbCategoriesChart.length*10; i++) {
-        const summ = dbOperationChart.filter((item) => item.CategoryId == i)
+    for( let i=1; i < dbCategoriesChart.length; i++) {
+        const summ = dbOperationChart.filter((item) => item.CategoryId == dbCategoriesChart[i].Id)
         .reduce((result, item) => result + item.Amount, 0);
         if(summ<0) {
             expensesArr.push(summ*(-1));
-            const name = dbCategoriesChart.find((el) => el.Id == i);
+            const name = dbCategoriesChart.find((el) => el.Id == dbCategoriesChart[i].Id);
             partNameArr.push(name.Name);
         }
     }
