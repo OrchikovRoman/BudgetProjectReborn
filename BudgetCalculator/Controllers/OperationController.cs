@@ -2,6 +2,7 @@
 using BLBudgetCalculator.Interfaces;
 using BLBudgetCalculator.Models;
 using BudgetCalculator.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,8 +26,10 @@ namespace BudgetCalculator.Controllers
         // GET: Operation
         public ActionResult Index()
         {
-            var operationBL = _service.GetAll().ToList(); 
-            var operationPL = _mapper.Map<IEnumerable<OperationViewModel>>(operationBL); 
+            var value = User.Identity.GetUserId();
+            var operationBL = _service.GetAll().ToList();
+            var operationsFilter = operationBL.Where(x => x.UserId == value || x.UserId == null);
+            var operationPL = _mapper.Map<IEnumerable<OperationViewModel>>(operationsFilter); 
             return View(operationPL);
         }
 
