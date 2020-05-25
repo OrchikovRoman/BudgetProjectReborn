@@ -16,10 +16,10 @@
         <table class="table">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Name)
+                    @Html.DisplayNameFor(model => model.Image)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Image)
+                    @Html.DisplayNameFor(model => model.Name)
                 </th>
                 <th></th>
             </tr>
@@ -27,10 +27,10 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => category.Name)
+                        <img src="~/Resourses/@category.Image" width="80" height="80" alt="@category.Image">
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => category.Image)
+                        @Html.DisplayFor(modelItem => category.Name)
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = category.Id }) |

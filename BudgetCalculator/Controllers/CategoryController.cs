@@ -2,7 +2,6 @@
 using BLBudgetCalculator.Interfaces;
 using BLBudgetCalculator.Models;
 using BudgetCalculator.Models;
-using Microsoft.AspNet.Identity; //ДЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩЩ
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,8 +47,17 @@ namespace BudgetCalculator.Controllers
 
         // POST: Category/Create
         [HttpPost]
-        public ActionResult Create(CategoryViewModel model)
+        public ActionResult Create(CategoryViewModel model, HttpPostedFileBase upload)
         {
+            if (upload != null)
+            {
+                // получаем имя файла
+                string fileName = System.IO.Path.GetFileName(upload.FileName);
+                // сохраняем файл в папку Files в проекте
+                upload.SaveAs(Server.MapPath("~/Resourses/" + fileName));
+                model.Image = fileName;
+            }
+
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -62,13 +70,23 @@ namespace BudgetCalculator.Controllers
         // GET: Category/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var category = _service.GetById(id);
+            var model = _mapper.Map<CategoryViewModel>(category);
+            return View(model);
         }
 
         // POST: Category/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, CategoryViewModel model)
+        public ActionResult Edit(int id, CategoryViewModel model, HttpPostedFileBase upload)
         {
+            if (upload != null)
+            {
+                // получаем имя файла
+                string fileName = System.IO.Path.GetFileName(upload.FileName);
+                // сохраняем файл в папку Files в проекте
+                upload.SaveAs(Server.MapPath("~/Resourses/" + fileName));
+                model.Image = fileName;
+            }
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -82,7 +100,9 @@ namespace BudgetCalculator.Controllers
         // GET: Category/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var category = _service.GetById(id);
+            var model = _mapper.Map<CategoryViewModel>(category);
+            return View(model);
         }
 
         // POST: Category/Delete/5
