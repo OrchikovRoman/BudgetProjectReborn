@@ -231,8 +231,6 @@ const init = ()=> {
                 },
                 error: () => { alert('error loading categories for chart'); }
             });
-            
-            
         },
         error: () => { alert('error loading operations for chart'); }
     });
