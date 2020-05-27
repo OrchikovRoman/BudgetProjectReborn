@@ -20,4 +20,3 @@ D:\BudgetCalculator\DALBudgetCalculator\bin\Debug\System.Web.Http.xml
 D:\BudgetCalculator\DALBudgetCalculator\bin\Debug\System.Web.Http.Cors.xml
 D:\BudgetCalculator\DALBudgetCalculator\bin\Debug\ru\System.Net.Http.Formatting.resources.dll
 D:\BudgetCalculator\DALBudgetCalculator\bin\Debug\ru\System.Web.Http.resources.dll
-D:\BudgetCalculator\DALBudgetCalculator\obj\Debug\DALBudgetCalculator.csprojAssemblyReference.cache

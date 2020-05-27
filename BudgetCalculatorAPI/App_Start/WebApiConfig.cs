@@ -20,7 +20,7 @@ namespace BudgetCalculatorAPI
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            EnableCorsAttribute cors = new EnableCorsAttribute("*","*","*");
+            EnableCorsAttribute cors = new EnableCorsAttribute("http://local.budgetcalculator", "*","*");
             config.EnableCors(cors);
         }
     }
