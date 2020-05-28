@@ -9,7 +9,7 @@ namespace BudgetCalculator.Models
     public class CategoryViewModel
     {
         public int Id { get; set; }
-        [Required]
+        [Required, MaxLength(500), MinLength(2)]
         public string Name { get; set; }
         public string Image { get; set; }
 

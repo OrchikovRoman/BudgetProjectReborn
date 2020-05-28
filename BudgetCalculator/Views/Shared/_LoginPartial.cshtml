@@ -7,9 +7,15 @@
 
         <ul class="nav navbar-nav navbar-right">
             <li>
-                @Html.ActionLink("Здравствуйте " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                <font color="Yellow" class="iconStyle">
+                    <marquee behavior="slide"  direction="down">@Html.ActionLink("Здравствуйте " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</marquee>
+                </font>
             </li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Выйти</a></li>
+            <li style="margin-left: 20px">
+                <font color="Yellow" class="iconStyle">
+                    <marquee behavior="slide" direction="down"><a href="javascript:document.getElementById('logoutForm').submit()">Выйти</a></marquee>
+                </font>
+            </li>
         </ul>
     }
 }
