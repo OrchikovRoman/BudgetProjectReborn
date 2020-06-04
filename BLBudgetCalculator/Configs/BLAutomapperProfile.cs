@@ -19,6 +19,5 @@ namespace BLBudgetCalculator.Configs
             CreateMap<CategoryModel, Category>().ReverseMap();
             CreateMap<Category, CategoryModel>().ReverseMap();
         }
-
     }
 }

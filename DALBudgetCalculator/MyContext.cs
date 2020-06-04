@@ -16,9 +16,7 @@ namespace DALBudgetCalculator
             Database.SetInitializer<MyContext>(new MyContextInitializer());
         }
 
-
         public DbSet<Operation> Operations { get; set; }
         public DbSet<Category> Categories { get; set; }
-
     }
 }

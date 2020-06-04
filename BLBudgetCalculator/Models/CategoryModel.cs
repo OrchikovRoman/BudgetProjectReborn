@@ -13,6 +13,5 @@ namespace BLBudgetCalculator.Models
         public string Image { get; set; }
 
         public ICollection<OperationModel> Operations { get; set; }
-
     }
 }
